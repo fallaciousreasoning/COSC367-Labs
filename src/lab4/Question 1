@@ -1,0 +1,32 @@
+An interpretation is an assignment to all variables
+A model is a valid interpretation
+
+Interpretations
+2^4
+
+Models
+p	q	a	b	valid
+T	T	T	T	T
+T	T	T	F	F
+T	T	F	T	F	
+T	T	F	F	F
+T	F	T	T	T
+T	F	T	F	F
+T	F	F	T	F
+T	F	F	F	F
+F	T	T	T	F
+F	T	T	F	F
+F	T	F	T	F
+F	T	F	F	F
+F	F	T	T	T
+F	F	T	F	F
+F	F	F	T	F	
+F	F	F	F	F
+
+3 models?
+
+a is true in 3 models
+b is true in 3 models
+p is true in 2 models
+q is true in 1 model
+
