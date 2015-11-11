@@ -175,3 +175,29 @@ network = {
 answer = query(network, 'John', {'Mary': True})
 print("Probability of John calling if\n"
       "Mary has called: {:.5f}".format(answer[True]))
+
+print('##########################n\n\n')
+
+network = {
+    'Free': {
+        'Parents': ['Spam'],
+        'CPT': {
+            (True,): 80/100,
+            (False,): 60/300,
+            }},
+            
+    'Commercial': {
+        'Parents': ['Spam'],
+        'CPT': {
+            (True,):90/100,
+            (False,):200/300,
+            }},
+
+    'Spam': {
+        'Parents': [],
+        'CPT': {
+            ():1/4
+            }},
+    }
+answer = query(network, 'Spam', {'Free': False, 'Commercial': False})
+print(answer)

@@ -3,30 +3,18 @@ import itertools
 __author__ = 'jayha_000'
 
 def joint_prob(network, assignment):
-    probs = []
+    total = 1
     for key in assignment:
-        if len(network[key]["Parents"]) == 0:
-            prob = network[key]["CPT"][()]
-            if not assignment[key]:
-                prob = 1 - prob
+        value = network[key]
 
-            probs.append(prob)
-        else:
-            lookup = []
-            for parent in network[key]["Parents"]:
-                lookup.append(assignment[parent])
+        parents = []
+        for p in value['Parents']:
+            parents.append(assignment[p])
+        
+        parents = tuple(parents)
+        total *= value['CPT'][parents] if assignment[key] else 1 - value['CPT'][parents]
 
-            lookupTuple = tuple(lookup)
-            prob = network[key]["CPT"][lookupTuple]
-            if not assignment[key]:
-                prob = 1 - prob
-            probs.append(prob)
-
-    result = 1
-    for prob in probs:
-        result *= prob
-
-    return result
+    return total
 
 def query(network, query_var, evidence):
     hidden_vars = network.keys() - evidence.keys() - {query_var}
